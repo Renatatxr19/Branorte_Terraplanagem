@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Branorte Terraplanagem e Demolições – Brasília, DF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ───────────────────────────────────────────── */
+    :root {
+      --blue-900: #03102b;
+      --blue-800: #071d45;
+      --blue-700: #0b2d6a;
+      --blue-600: #0f3d8f;
+      --blue-500: #1657c4;
+      --blue-400: #2672e8;
+      --blue-300: #5c9ef5;
+      --blue-100: #d0e3fd;
+      --accent:   #2672e8;
+      --gold:     #e8a020;
+      --white:    #ffffff;
+      --off-white:#f0f4fa;
+      --gray-200: #c8d3e4;
+      --gray-500: #6b7f9e;
+      --black:    #000000;
+
+      --grad-hero:  linear-gradient(135deg, #03102b 0%, #071d45 50%, #0f3d8f 100%);
+      --grad-card:  linear-gradient(145deg, #071d45 0%, #0b2d6a 100%);
+      --grad-accent:linear-gradient(90deg, #1657c4, #2672e8, #5c9ef5);
+
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+
+      --radius-sm: 4px;
+      --radius-md: 10px;
+      --radius-lg: 20px;
+
+      --shadow-card: 0 8px 32px rgba(0,0,0,.45);
+      --shadow-btn:  0 4px 24px rgba(38,114,232,.5);
+
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────── */
+    .container  { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 100px 0; }
+    .label      {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue-300);
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--grad-accent);
+      color: var(--white);
+      box-shadow: var(--shadow-btn);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(38,114,232,.65); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--blue-400);
+      color: var(--blue-300);
+    }
+    .btn-outline:hover { background: var(--blue-800); color: var(--white); }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+   /* ─── NAVBAR ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  padding: 0 24px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(3,16,43,.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(38,114,232,.18);
+
+  transition: background var(--transition);
+}
+
+/* LOGO */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+}
+
+.logo-img {
+  height: 42px;
+  width: 42px;        /* deixa quadrado pra virar círculo */
+  object-fit: cover;  /* preenche certinho */
+  border-radius: 50%; /* ISSO faz ficar redondo */
+}
+
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.logo-sub {
+  font-size: .65rem;
+  font-weight: 400;
+  color: var(--blue-300);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* LINKS */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin-left: auto;
+}
+
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gray-200);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--blue-300);
+}
+
+/* BOTÕES */
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 30px; /* aumenta esse valor se quiser mais espaço */
+}
+
+/* MENU MOBILE */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px,-5px);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+
+  background: rgba(3,16,43,.97);
+  backdrop-filter: blur(20px);
+
+  padding: 32px 24px;
+  border-bottom: 1px solid rgba(38,114,232,.2);
+
+  z-index: 999;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--white);
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: 20px;
+
+  transition: color var(--transition);
+}
+
+.mobile-menu a:hover {
+  color: var(--blue-300);
+}
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  padding-top: 80px; 
+}
+
+/* IMAGEM DE FUNDO */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('imagens/home.jpg') center/cover no-repeat;
+  z-index: 1;
+
+  filter: brightness(0.6); /* escurece a imagem */
+}
+
+/* ESCURECER FUNDO */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.4)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+
+  max-width: 560px;
+
+  margin-left: auto;
+  margin-right: 5%; /* dá respiro e fica elegante */
+
+  text-align: left;
+}
+
+
+/* TÍTULO */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+/* SUBTÍTULO */
+.hero-subtitle {
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, #1657c4, #2672e8);
+  color: #fff;
+  padding: 15px 25px;
+  font-weight: bold;
+  border-radius: 6px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-cta:hover {
+  background: linear-gradient(135deg, #0f3d8f, #1657c4);
+  transform: translateY(-2px);
+}
+    /* ─── SOBRE ──────────────────────────────────────────────── */
+    #sobre {
+      background: var(--blue-900);
+      position: relative;
+      overflow: hidden;
+    }
+    #sobre::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(22,87,196,.22) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .sobre-img {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .sobre-img img { height: 500px; object-fit: cover; }
+    .sobre-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid rgba(38,114,232,.3);
+      border-radius: var(--radius-lg);
+    }
+    .sobre-img-badge {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      background: var(--grad-accent);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      font-family: var(--font-display);
+    }
+    .sobre-img-badge strong { display: block; font-size: 2rem; font-weight: 900; line-height: 1; }
+    .sobre-img-badge span   { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+
+    .sobre-text .section-title { margin-bottom: 24px; }
+    .sobre-text p { color: var(--gray-200); line-height: 1.75; margin-bottom: 20px; }
+    .sobre-feats { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .sobre-feats li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      color: var(--gray-200);
+    }
+    .sobre-feats li i { color: var(--accent); font-size: .85rem; }
+
+   /* ─── SERVIÇOS ───────────────────────────────────────────── */
+#servicos {
+  background: var(--black);
+  position: relative;
+  padding: 100px 0;
+}
+
+#servicos::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(38,114,232,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38,114,232,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* HEADER */
+.servicos-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.servicos-header p {
+  color: var(--gray-500);
+  max-width: 540px;
+  margin: 20px auto 0;
+  line-height: 1.7;
+}
+
+/* GRID */
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  position: relative;
+}
+
+/* CARD */
+.servico-card {
+  background: var(--grad-card);
+  border: 1px solid rgba(38,114,232,.2);
+  border-radius: var(--radius-lg);
+  padding: 42px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all .35s ease;
+  cursor: default;
+}
+
+/* LINHA TOP */
+.servico-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+
+/* HOVER */
+.servico-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+  border-color: rgba(38,114,232,.6);
+}
+
+.servico-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ÍCONE */
+.servico-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(38,114,232,.15);
+  border: 1px solid rgba(38,114,232,.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  color: var(--blue-300);
+  transition: all .3s ease;
+}
+
+.servico-card:hover .servico-icon {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* TÍTULO */
+.servico-card h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 14px;
+}
+
+/* TEXTO */
+.servico-card p {
+  color: var(--gray-500);
+  line-height: 1.65;
+  font-size: .92rem;
+}
+
+/* NÚMERO DECORATIVO */
+.servico-num {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4.5rem;
+  color: rgba(255,255,255,.05);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── GALERIA ────────────────────────────────────────────── */
+#galeria {
+  background: var(--blue-900);
+  overflow: hidden;
+  scroll-margin-top: 120px; /* 👈 resolve o problema do botão */
+}
+
+.galeria-header { 
+  text-align: center; 
+  margin-bottom: 56px; 
+}
+
+.galeria-header p { 
+  color: var(--gray-500); 
+  margin-top: 16px; 
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 240px);
+  gap: 12px;
+}
+
+.gal-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+/* IMAGENS */
+.gal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+}
+
+.gal-item:hover img {
+  transform: scale(1.08);
+}
+
+/* OVERLAY */
+.gal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3,16,43,.8) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.gal-item:hover .gal-overlay {
+  opacity: 1;
+}
+
+.gal-overlay span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+    /* ─── DIFERENCIAIS ───────────────────────────────────────── */
+    #diferenciais {
+      background: linear-gradient(135deg, #03102b 0%, #071d45 60%, #0b2d6a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #diferenciais::after {
+      content: '';
+      position: absolute;
+      bottom: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 400px;
+      background: radial-gradient(ellipse, rgba(38,114,232,.15) 0%, transparent 70%);
+    }
+    .dif-header { text-align: center; margin-bottom: 64px; }
+    .dif-header p { color: var(--gray-500); max-width: 480px; margin: 16px auto 0; line-height: 1.7; }
+
+    .dif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      position: relative;
+    }
+    .dif-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .dif-card:hover { background: rgba(38,114,232,.12); border-color: rgba(38,114,232,.4); transform: translateY(-6px); }
+
+    .dif-icon {
+      width: 72px; height: 72px;
+      background: var(--grad-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.6rem;
+    }
+    .dif-card h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+    .dif-card p { color: var(--gray-500); font-size: .9rem; line-height: 1.65; }
+
+    /* ─── CTA BAND ───────────────────────────────────────────── */
+    #cta-band {
+      background: var(--grad-accent);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,.04) 0px,
+        rgba(255,255,255,.04) 1px,
+        transparent 1px,
+        transparent 32px
+      );
+    }
+    #cta-band h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    #cta-band p { font-size: 1.1rem; opacity: .85; margin-bottom: 40px; position: relative; }
+    #cta-band .btn {
+      background: var(--white);
+      color: var(--blue-700);
+      font-size: 1.1rem;
+      padding: 18px 48px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.3);
+      position: relative;
+    }
+    #cta-band .btn:hover { transform: translateY(-4px); box-shadow: 0 16px 56px rgba(0,0,0,.4); }
+    #cta-band .btn i { color: #25d366; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--blue-900);
+      border-top: 1px solid rgba(38,114,232,.18);
+      padding: 56px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo-text { font-size: 1.3rem; }
+    .footer-brand p { color: var(--gray-500); margin-top: 16px; line-height: 1.7; font-size: .9rem; max-width: 280px; }
+
+    footer h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 20px;
+      color: var(--blue-300);
+    }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    footer li a {
+      color: var(--gray-500);
+      font-size: .88rem;
+      transition: color var(--transition);
+    }
+    footer li a:hover { color: var(--blue-300); }
+
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gray-500);
+      font-size: .88rem;
+    }
+    .footer-contact li i { color: var(--accent); width: 16px; text-align: center; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { color: var(--gray-500); font-size: .8rem; }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────────────── */
+    #whatsapp-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 9999;
+      width: 62px; height: 62px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--white);
+      box-shadow: 0 6px 32px rgba(37,211,102,.45);
+      animation: pulse-wpp 2.5s ease-in-out infinite;
+      transition: transform var(--transition);
+    }
+    #whatsapp-float:hover { transform: scale(1.12); }
+    @keyframes pulse-wpp {
+      0%,100% { box-shadow: 0 6px 32px rgba(37,211,102,.45); }
+      50%      { box-shadow: 0 6px 48px rgba(37,211,102,.75); }
+    }
+    .wpp-tooltip {
+      position: absolute;
+      right: 76px;
+      background: var(--blue-800);
+      border: 1px solid rgba(38,114,232,.3);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    #whatsapp-float:hover .wpp-tooltip { opacity: 1; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+      .sobre-img  { order: -1; }
+      .sobre-img img { height: 320px; }
+
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gal-item { grid-column: auto !important; grid-row: auto !important; height: 200px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+
+      .hero-stats { position: static; margin-top: 48px; flex-wrap: wrap; }
+      .stat-card  { flex: 1 1 120px; }
+    }
+
+    @media (max-width: 560px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-content {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+  .hero-subtitle {
+  font-size: 0.95rem;
+}
+.btn-cta {
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+}
+  @media (max-width: 560px) {
+  .section { padding: 72px 0; }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-content {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .btn-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .galeria-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gal-item {
+    height: 220px;
+  }
+
+  #whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+}
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ──────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="imagens/logo.jpeg" alt="Branorte" class="logo-img">
+
+    <div class="logo-text-group">
+      <div class="logo-text">Branorte</div>
+      <div class="logo-sub">Terraplanagem & Demolições</div>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+  </ul>
+
+ <div class="nav-cta">
+  <a class="btn btn-primary"
+     href="https://wa.me/5561981616736?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+     target="_blank">
+     Orçamento
+  </a>
+</div>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre"       onclick="closeMobile()">Sobre</a>
+  <a href="#servicos"    onclick="closeMobile()">Serviços</a>
+  <a href="#galeria"     onclick="closeMobile()">Galeria</a>
+  <a href="#diferenciais" onclick="closeMobile()">Diferenciais</a>
+  <a class="btn btn-primary" href="https://wa.me/5561981616736?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.">
+  <i class="fab fa-whatsapp"></i>
+  Solicitar Orçamento
+</a>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      
+      <h1 class="hero-title">
+        Locação e <br> Terraplanagem
+      </h1>
+
+      <div class="hero-line"></div>
+
+      <p class="hero-subtitle">
+          Máquinas modernas e serviços de escavação e preparo de terrenos com rapidez, eficiência e qualidade.
+      </p>
+
+      <a class="btn-cta" href="https://wa.me/5561981616736?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.">
+
+        SOLICITE SEU ORÇAMENTO
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE ────────────────────────────────────────────────── -->
+<section id="sobre" class="section">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-img reveal">
+        <img src="imagens/logo2.jpg" alt="Equipe Branorte em obra" loading="lazy" />
+        <div class="sobre-img-badge">
+          <strong>+10</strong>
+          <span>Anos no Mercado</span>
+        </div>
+      </div>
+
+      <div class="sobre-text reveal">
+  <span class="label">Sobre a Empresa</span>
+  <h2 class="section-title">Excelência em cada<br>projeto executado</h2>
+  
+  <p>
+    A <strong>Branorte Terraplanagem</strong> nasceu da união familiar e atua há mais de uma década no mercado de Brasília e Entorno, oferecendo serviços de alto padrão em movimentação de terra, demolições controladas e preparação de terrenos para construção.
+  </p>
+  
+  <p>
+    Nossa <strong>missão</strong> é entregar cada projeto com máxima segurança, dentro do prazo e com a qualidade que nossos <strong>clientes</strong> merecem. Contamos com equipamentos modernos, equipe altamente qualificada e um histórico de mais de 300 obras concluídas com sucesso.
+  </p>
+
+  <ul class="sobre-feats">
+    <li><i class="fas fa-check-circle"></i> Empresa regularizada e com todas as licenças em dia</li>
+    <li><i class="fas fa-check-circle"></i> Frota própria de máquinas e equipamentos</li>
+    <li><i class="fas fa-check-circle"></i> Atendimento personalizado do início ao fim</li>
+    <li><i class="fas fa-check-circle"></i> Atuação em Brasília e todo o entorno</li>
+  </ul>
+</div> 
+</div> 
+</div> 
+</section>
+
+<!-- ─── SERVIÇOS ─────────────────────────────────────────────── -->
+<section id="servicos" class="section">
+  <div class="container">
+    
+    <div class="servicos-header reveal">
+      <span class="label">O que fazemos</span>
+      <h2 class="section-title">Nossos Serviços</h2>
+      <p>
+        Do planejamento à execução, entregamos soluções completas para preparar seu terreno com qualidade e agilidade.
+      </p>
+    </div>
+
+    <div class="servicos-grid">
+
+  <!-- 01 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-tractor"></i></div>
+    <h3>Terraplanagem</h3>
+    <p>
+      Preparamos seu terreno com precisão, garantindo nivelamento e estabilidade para qualquer tipo de obra.
+    </p>
+    <div class="servico-num">01</div>
+  </div>
+
+  <!-- 02 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-truck-monster"></i></div>
+    <h3>Locação de Máquinas</h3>
+    <p>
+      Disponibilizamos equipamentos modernos e revisados, garantindo eficiência e segurança no seu projeto.
+    </p>
+    <div class="servico-num">02</div>
+  </div>
+
+  <!-- 03 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-mountain"></i></div>
+    <h3>Escavação</h3>
+    <p>
+      Execução de escavações com precisão para fundações, valas e infraestrutura em geral.
+    </p>
+    <div class="servico-num">03</div>
+  </div>
+
+  <!-- 04 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-layer-group"></i></div>
+    <h3>Compactação de Solo</h3>
+    <p>
+      Aplicamos técnicas de compactação em camadas para garantir resistência e evitar afundamentos.
+    </p>
+    <div class="servico-num">04</div>
+  </div>
+
+  <!-- 05 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-dumpster"></i></div>
+    <h3>Fornecimento de Aterro</h3>
+    <p>
+      Fornecemos materiais de qualidade para nivelamento e elevação do terreno conforme o projeto.
+    </p>
+    <div class="servico-num">05</div>
+  </div>
+
+  <!-- 06 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-road"></i></div>
+    <h3>Pavimentação Asfáltica</h3>
+    <p>
+      Execução completa de pavimentação com alta durabilidade e acabamento profissional.
+    </p>
+    <div class="servico-num">06</div>
+  </div>
+
+  <!-- 07 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-th-large"></i></div>
+    <h3>Pavimentação com Bloquetes</h3>
+    <p>
+      Solução moderna, resistente e com ótima drenagem, ideal para áreas urbanas e comerciais.
+    </p>
+    <div class="servico-num">07</div>
+  </div>
+
+  <!-- 08 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-water"></i></div>
+    <h3>Drenagem</h3>
+    <p>
+      Sistemas de drenagem que evitam acúmulo de água e aumentam a durabilidade da obra.
+    </p>
+    <div class="servico-num">08</div>
+  </div>
+
+  <!-- 09 -->
+  <div class="servico-card reveal">
+    <div class="servico-icon"><i class="fas fa-hammer"></i></div>
+    <h3>Demolição</h3>
+    <p>
+      Demolições seguras e controladas com descarte correto dos resíduos.
+    </p>
+    <div class="servico-num">09</div>
+  </div>
+</div> <!-- fecha servicos-grid -->
+</div> <!-- fecha container -->
+</section> <!-- fecha serviços -->
+
+<!-- ─── GALERIA ─────────────────────────────────────────────── -->
+<section id="galeria" class="section">
+  <div class="container">
+
+    <div class="galeria-header reveal">
+      <span class="label">Portfólio</span>
+      <h2 class="section-title">Galeria de Obras</h2>
+      <p>Confira alguns dos nossos projetos realizados.</p>
+    </div>
+
+    <div class="galeria-grid reveal">
+
+      <div class="gal-item">
+        <img src="imagens/Terraplanagem.jpg" alt="">
+        <div class="gal-overlay"><span>Terraplanagem</span></div>
+      </div>
+
+      <div class="gal-item">
+        <img src="imagens/Terraplanagem2.JPG" alt="">
+        <div class="gal-overlay"><span>Nivelamento</span></div>
+      </div>
+
+      <div class="gal-item">
+        <img src="imagens/Terraplanagem3.JPG" alt="">
+        <div class="gal-overlay"><span>Compactação</span></div>
+      </div>
+
+      <div class="gal-item">
+        <img src="imagens/escavacao2.JPG" alt="">
+        <div class="gal-overlay"><span>Escavação</span></div>
+      </div>
+
+      <div class="gal-item">
+        <img src="imagens/Escavacao.JPG" alt="">
+        <div class="gal-overlay"><span>Obra Urbana</span></div>
+      </div>
+
+      <div class="gal-item">
+        <img src="imagens/demolicao.jpg" alt="">
+        <div class="gal-overlay"><span>Demolição</span></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── DIFERENCIAIS ─────────────────────────────────────────── -->
+<section id="diferenciais" class="section">
+  <div class="container">
+    <div class="dif-header reveal">
+      <span class="label">Por que nos escolher</span>
+      <h2 class="section-title">Nossos Diferenciais</h2>
+      <p>O que nos torna a escolha certa para o seu projeto em Brasília.</p>
+    </div>
+
+   <div class="dif-grid">
+
+ <div class="dif-card reveal">
+  <div class="dif-icon"><i class="fas fa-bolt"></i></div>
+  <h3>Atendimento Ágil</h3>
+  <p>Orçamentos rápidos e início imediato das atividades, garantindo mais eficiência para o seu projeto.</p>
+</div>
+
+  <div class="dif-card reveal">
+    <div class="dif-icon"><i class="fas fa-truck"></i></div>
+    <h3>Frota Própria</h3>
+    <p>Máquinas modernas e próprias, garantindo mais agilidade e menor custo para o cliente.</p>
+  </div>
+
+  <div class="dif-card reveal">
+    <div class="dif-icon"><i class="fas fa-helmet-safety"></i></div>
+    <h3>Equipe Especializada</h3>
+    <p>Profissionais experientes e treinados para executar serviços com segurança e precisão.</p>
+  </div>
+
+  <div class="dif-card reveal">
+    <div class="dif-icon"><i class="fas fa-clock"></i></div>
+    <h3>Compromisso com Prazos</h3>
+    <p>Entrega no prazo combinado, respeitando o cronograma da sua obra.</p>
+  </div>
+
+  <div class="dif-card reveal">
+    <div class="dif-icon"><i class="fas fa-shield-alt"></i></div>
+    <h3>Empresa Regularizada</h3>
+    <p>Atuamos com todas as licenças exigidas, garantindo segurança jurídica e ambiental.</p>
+  </div>
+
+  <div class="dif-card reveal">
+    <div class="dif-icon"><i class="fas fa-map-marker-alt"></i></div>
+    <h3>Atendimento Regional</h3>
+    <p>Atendemos Brasília e todo o entorno com rapidez e facilidade de deslocamento.</p>
+  </div>
+
+</div> 
+</div> 
+</section> 
+
+
+
+<!-- ─── CTA BAND ─────────────────────────────────────────────── -->
+<section id="cta-band">
+  <div class="container">
+    <h2>Pronto para tirar seu<br>projeto do papel?</h2>
+    <p>Fale com nossa equipe e receba um orçamento rápido, sem compromisso.</p>
+    <a class="btn" href="https://wa.me/5561981616736?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank">
+      <i class="fab fa-whatsapp" style="font-size:1.3rem"></i>
+     Solicitar Orçamento
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+         <div class="nav-logo">
+          <img src="imagens/logo.jpeg" alt="Branorte" class="logo-img">
+          <div>
+            <div class="logo-text">Branorte</div>
+            <div class="logo-sub">Terraplanagem &amp; Demolições</div>
+          </div>
+        </div>
+        <p style="margin-top:20px">
+          Mais de 10 anos transformando terrenos em Brasília e região. Qualidade, eficiência e compromisso em cada obra.
+        </p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#sobre">Sobre a Empresa</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer-contact">
+          <li><i class="fab fa-whatsapp"></i> (61) 9 8161-6736</li>
+          <li><i class="fas fa-envelope"></i> Branorte@gmail.com.br</li>
+          <li><i class="fas fa-map-marker-alt"></i> Brasília – DF e Entorno</li>
+          <li><i class="fas fa-clock"></i> Seg–Sáb, 7h às 18h</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Branorte Terraplanagem e Demolições. Todos os direitos reservados.</p>
+     <p>
+  Desenvolvido por 
+  <strong>Renata Teixeira</strong> 
+  em Brasília, DF
+</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ────────────────────────────────────────── -->
+<a id="whatsapp-float" href="https://wa.me/5561981616736?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wpp-tooltip">Fale conosco!</span>
+</a>
+
+<script>
+  /* ── hamburger ── */
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+  function closeMobile() {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+  }
+
+  /* ── scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── navbar shrink ── */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(3,16,43,.97)'
+      : 'rgba(3,16,43,.85)';
+  });
+</script>
+</body>
+</html>
